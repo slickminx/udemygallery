@@ -7,6 +7,7 @@ class Database {
 
 
     public $dbc;
+    
     function __construct() {
 
         $this->open_db_connection();
@@ -47,6 +48,11 @@ class Database {
     }
     public function the_insert_id() {
         $this->dbc->lastInsertID();
+    }
+    public function getDb() {
+        if ($this->dbc instanceof PDO) {
+             return $this->dbc;
+        }
     }
 
 }

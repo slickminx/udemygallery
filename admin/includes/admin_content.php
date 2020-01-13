@@ -13,14 +13,40 @@
                             // if($database->dbc){
                             //     echo 'true';
                             // }
+
+                           // $stmt = User::find_all_users();
+                            //var_dump($stmt);
+                            //echo $stmt;
+                          //  $stmt = User::find_user_by_id(4);
+                    
+
+                            // while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                            //    echo $row['username'] . "<br/>";
+                            // }
+                            //echo var_dump($stmt);
+
+                          //  $user = User::instantation($stmt);
+                           
+
+                            //echo $user->username;
                             
-                            $sql = "SELECT * FROM users WHERE id=1";
-                            $result = $database->query($sql);
+                           // echo $stmt['username'];
 
-                            while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                               echo $row['first_name'];
-                            }
+                           //Video 47
+                                //Commented out in Video 48
+                            //   $users = User::find_all_users();
+                            //    // var_dump($users);
+                            //   foreach($users as $user){
+                            //     echo $user->id . "<br>";
+                            //   }
 
+                            //Video 48
+                            $found_user = User::find_user_by_id(4);
+                            //var_dump($found_user);
+                            
+                            echo $found_user->username;
+
+                            //$pictures = new Pictures();
                         ?>
                         <ol class="breadcrumb">
                             <li>
