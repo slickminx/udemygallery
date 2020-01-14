@@ -1,16 +1,19 @@
 <?php ob_start();?>
 <?php require_once("init.php");?>
+<?php if($session->is_signed_in()){
+    redirect('index.php');
+}?>
 
 <?php 
 
-if(!$session->is_signed_in()) {
-    redirect("login.php");
-}
+// if(!$session->is_signed_in()) {
+//     redirect("login.php");
+// }
 
 
 
 
-?>
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">

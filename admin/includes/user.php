@@ -66,6 +66,19 @@ class User {
             
             return $the_object_array;
         } else {
+            if($num =='userpass'){
+                $stmt = $database->getDb()->prepare($sql);
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':password', $password);
+                $stmt->execute();
+        
+                $the_object_array = array();
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $the_object_array[] = self::instantation($row);
+                }
+                
+                return $the_object_array;
+            }
             $stmt = $database->getDb()->prepare($sql);
             $stmt->bindParam(':id', $num);
             $stmt->execute();
@@ -79,6 +92,23 @@ class User {
         }
        
         //return $stmt;
+    }
+    public static function verify_user($username, $password){
+        global $database;
+
+        $username = $database->escape_string($username);
+        $password = $database->escape_string($password);
+
+
+        $sql = "SELECT * FROM users WHERE";
+        $sql .= "username = :username";
+        $sql .= "password = :password";
+        $sql .= "LIMIT 1";
+
+  
+        $the_result_array = self::find_this_query($sql, 'userpass');
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
+
     }
 
     public static function instantation($the_record){
